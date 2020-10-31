@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {TouchableOpacity, Text} from 'react-native';
+import {TouchableOpacity, Text, View} from 'react-native';
 import PropTypes from 'prop-types';
 
 import styleConstructor from './style';
@@ -76,6 +76,8 @@ class Day extends Component {
       }
     }
 
+    const isVisibleDot = typeof marking.dot !== 'undefined' ? true : false;
+    
     return (
       <TouchableOpacity
         testID={this.props.testID}
@@ -88,6 +90,7 @@ class Day extends Component {
         accessibilityLabel={this.props.accessibilityLabel}
       >
         <Text allowFontScaling={false} style={textStyle}>{String(this.props.children)}</Text>
+        {isVisibleDot ? <View style={{width: 6, height: 6, borderRadius: 3, backgroundColor: '#FF5D93'}}></View> : null}
       </TouchableOpacity>
     );
   }
